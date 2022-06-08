@@ -1,0 +1,17 @@
+.container {
+    min-height: 100vh;
+    .upload {
+        border: 1px dashed rgb(162, 161, 161);
+        border-radius: 5px;
+        height: 80px;
+        width: 400px;
+        cursor: pointer;
+        .upload-icon {
+            font-size: 30px;
+            color: rgb(162, 161, 161);
+        }
+    }
+    .over {
+        background: #eee;
+    }
+}

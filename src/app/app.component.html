@@ -1,0 +1,28 @@
+<div class="container" fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start center">
+    <span>
+      <h2 [ngStyle]="{'font-size.px':40}">Gamma</h2>
+    </span>
+    <span [ngStyle]="{'font-size.px':24}">
+      Importer des groupes de musique depuis un fichier Excel (cliquer ou glisser/déplacer)
+    </span>
+    <div (click)="openFile()" class="upload" fxLayout="row" fxLayoutAlign="center center" (drop)="dropFile($event); over = false" (dragover)="$event.preventDefault()" (dragenter)="over = true" (dragleave)="over = false" [class.over]="over">
+        <input #fileInput type="file" accept=".xls, .xlsx" [multiple]="false" fxHide="true" (change)="onFileSelected($event)" />
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <span>
+              <mat-icon class="upload-icon">cloud_upload</mat-icon>
+            </span>
+            <span [ngStyle]="{'font-style':file == null ? 'italic' : '' }">
+              {{ file == null ? "Aucun fichier sélectionné" : file.name}}
+            </span>
+        </div>
+    </div>
+
+    <div *ngIf="file != null">
+        <button mat-raised-button color="primary" (click)="upload()">Importer</button>
+    </div>
+    <div *ngIf="result.length != 0">
+        <span [ngStyle]="{'color':result[0] == 'success' ? 'green' : 'red' }">
+          {{ result[1] }}
+        </span>
+    </div>
+</div>
